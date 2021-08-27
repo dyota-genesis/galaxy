@@ -1,0 +1,24 @@
+{
+  "name": "galaxy",
+  "version": "1.0.0",
+  "description": "Web API to connect to the Galaxy SQL database. Serves JSON data to consume by Power Apps.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dyota-genesis/galaxy.git"
+  },
+  "author": "Dyota Tanuwibawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dyota-genesis/galaxy/issues"
+  },
+  "homepage": "https://github.com/dyota-genesis/galaxy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.12"
+  }
+}
