@@ -5,17 +5,16 @@ const app = express();
 const mysql = require('mysql');
 
 
+const database = {
+    host:     'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+    user:     'pmdpsktr9mw27q90',
+    password: 'hl2dk6g11yemws9o',
+    database: 'tbtl69l4kzu4zjdr'
+}
 
 app.get('/', (req,res) => {
     
-    const conn = mysql.createConnection(
-        {
-            host: 'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-            user: 'pmdpsktr9mw27q90',
-            password: 'hl2dk6g11yemws9o',
-            database: 'tbtl69l4kzu4zjdr'
-        }
-    )
+    const conn = mysql.createConnection(database)
     
     conn.connect();
 
@@ -28,6 +27,21 @@ app.get('/', (req,res) => {
 
     conn.end();
     
+})
+
+app.get('/limit5', (req, res) => {
+    const conn = mysql.createConnection(database)
+    
+    conn.connect();
+
+    conn.query(
+        'SELECT * FROM tblPeopleSkillsScores LIMIT 5', 
+        (err, rows, fields) => {
+            res.json(rows);
+        }
+    );
+
+    conn.end();
 })
 
 // Heroku NEEDS the process.end.PORT part, not 3000
