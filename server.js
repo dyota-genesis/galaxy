@@ -23,7 +23,13 @@ app.get('/', (req,res) => {
             res.json(rows);
         }
     );
+
+    conn.end();
     
 })
 
-app.listen(3000, () => console.log('Listening on port 3000'));
+// Heroku NEEDS the process.end.PORT part, not 3000
+app.listen(
+    process.env.PORT || 3000, 
+    () => console.log('Listening on port 3000')
+);
