@@ -1,9 +1,6 @@
 const express = require('express');
-
 const app = express();
-
 const mysql = require('mysql');
-
 
 const database = {
     host:     'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
@@ -12,37 +9,17 @@ const database = {
     database: 'tbtl69l4kzu4zjdr'
 }
 
-app.get('/', (req,res) => {
-    
-    const conn = mysql.createConnection(database)
-    
-    conn.connect();
+function querydb(res, query) {
+        const conn = mysql.createConnection(database)
+        conn.connect();
+        conn.query(query, (err, rows, fields) => {
+                res.json(rows);
+        });
+        conn.end();
+}
 
-    conn.query(
-        'SELECT * FROM tblPeopleSkillsScores', 
-        (err, rows, fields) => {
-            res.json(rows);
-        }
-    );
-
-    conn.end();
-    
-})
-
-app.get('/limit5', (req, res) => {
-    const conn = mysql.createConnection(database)
-    
-    conn.connect();
-
-    conn.query(
-        'SELECT * FROM tblPeopleSkillsScores LIMIT 5', 
-        (err, rows, fields) => {
-            res.json(rows);
-        }
-    );
-
-    conn.end();
-})
+app.get('/',       (req, res) => {querydb(res, 'SELECT * FROM tblPeopleSkillsScores')})
+app.get('/limit5', (req, res) => {querydb(res, 'SELECT * FROM tblPeopleSkillsScores LIMIT 5')})
 
 // Heroku NEEDS the process.end.PORT part, not 3000
 app.listen(
