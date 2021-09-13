@@ -53,8 +53,8 @@ function converToSql(responseQuery) {
 }
 
 const database = {
-    host:     'c8u4r7fp8i8qaniw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
-    user:     'pmdpsktr9mw27q90',
-    password: 'hl2dk6g11yemws9o',
-    database: 'tbtl69l4kzu4zjdr'
+    host:     process.env.JAWSDB_HOST,
+    user:     process.env.JAWSDB_USER,
+    password: process.env.JAWSDB_PASSWORD,
+    database: process.env.JAWSDB_DATABASE 
 }

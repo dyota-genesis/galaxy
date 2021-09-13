@@ -1,0 +1,27 @@
+* A snapshot of data (July 2021) from all of the COPs have been migrated to SharePoint (~ 53,000 data points)
+* Data is connected to Power BI, ready for analysis (extension of previous proof-of-concept)
+* People and locations on the skills matrices have been correlated using Active Directory data, linked by the Genesis MDM
+* The data-input end using Power Apps has implementation details to be worked out - data volume is unprecedented
+* The data analysis end of the application is more readily usable - will focus on this to generate short-term benefits
+* Timeline projections: 
+	* Set up Power BI report with analytics on July dataset by end of first week of September
+	* Speak to Commercial COP on benefits and requested features
+	* Implement by third requests by third week of September
+	* Resume front-end work after this
+
+Challenges:
+* Power Apps and data volume
+	Loading in this volume of data (>2,000 rows) into Power Apps from SharePoint requires an iterative workaround technique. Using this technique on the currect dataset of ~53,000 rows is possible, but takes ~5mins. This has to happen on app startup, in order to set up the app for functions downstream. This is an experience-breaking limitation that needs to be solved.
+	
+	* Attempted solution #1: Use an SQL database in place of SharePoint List
+		* Status: Web server with SQL database is operational and is giving correct data. 
+			Currently working on two fronts:
+			* Receiving the data reliably
+			* Getting Power Apps to interpret the data correctly
+		* If successful, future tasks: 
+			* Flesh out web server to handle database write (currently only configured to read)
+			* Continue with front-end application development
+	
+	* Fallback solution
+		* Retain Excel spreadsheets as input method
+		* Automate collation of data from individual spreadsheets into Power BI

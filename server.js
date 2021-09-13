@@ -26,6 +26,7 @@ app.get('/scores', (req, res) => {
 })
 
 let localport = 8080
+
 app.listen(
     process.env.PORT // for Heroku
     || localport, // for localhost
