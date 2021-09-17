@@ -1,13 +1,13 @@
 module.exports = {querydb,convertComparator,convertToSql}
 
 const mysql = require('mysql');
-const localDatabase = require('../local/database.js');
+// const localDatabase = require('../local/database.js');
 
 function querydb(res, query) {
     console.log(localDatabase)
     const conn = mysql.createConnection(
-        localDatabase
-        // database
+        // localDatabase
+        database
     )
     conn.connect();
     conn.query(query, (err, rows, fields) => {
