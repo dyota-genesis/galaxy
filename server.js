@@ -3,10 +3,9 @@ const express   = require('express');
 const app       = express();
 
 // BODY-PARSER
-const bp = require('body-parser')
-app.use(bp.json())
-app.use(bp.urlencoded({ extended: true }))
-var jsonParser = bp.json()
+// const bp = require('body-parser')
+// app.use(bp.json())
+// app.use(bp.urlencoded({ extended: true }))
 
 const {querydb,convertComparator,convertToSql} = require('./util/functions.js')
 
@@ -14,7 +13,6 @@ const {querydb,convertComparator,convertToSql} = require('./util/functions.js')
 app.use(express.static('public'))
 
 // SERVER
-
 app.get('/all', (req, res) => {querydb(res, 'SELECT * FROM tblscores')})
 
 app.get('/scores', (req, res) => {
@@ -37,8 +35,6 @@ app.get('/scores', (req, res) => {
 
 app.post('/scores/add',(req, res) => {
     let body = req.query
-    
-    
     console.log(`person_num is ${body.person_num}`)
     console.log(`level2_num is ${body.level2_num}`)
     console.log(`level1_num is ${body.level1_num}`)
@@ -47,9 +43,7 @@ app.post('/scores/add',(req, res) => {
 
     // let sqlQuery = `INSERT INTO tblscores (person_num, level2_num, level1_num, cop_num, score_num) VALUES`
     // querydb(res, sqlQuery)
-}
-
-)
+})
 
 // LISTEN
 let localport = 8080
