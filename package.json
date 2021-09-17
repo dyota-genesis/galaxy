@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dyota-genesis/galaxy#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "heroku": "^7.59.0",
     "mysql": "^2.18.1",

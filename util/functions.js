@@ -1,9 +1,14 @@
-module.exports = {querydb,convertComparator,converToSql}
+module.exports = {querydb,convertComparator,convertToSql}
 
 const mysql = require('mysql');
+const localDatabase = require('../local/database.js');
 
 function querydb(res, query) {
-    const conn = mysql.createConnection(database)
+    console.log(localDatabase)
+    const conn = mysql.createConnection(
+        // localDatabase
+        database
+    )
     conn.connect();
     conn.query(query, (err, rows, fields) => {
         console.log(`Returned ${rows.length} rows`)
@@ -22,7 +27,7 @@ function convertComparator(comparator){
     return operator
 }
 
-function converToSql(responseQuery) {
+function convertToSql(responseQuery) {
     let keys = Object.keys(responseQuery) // array of keys
     let values = Object.values(responseQuery) // array of values
     let clauses = [] // empty array to hold all of the conditions

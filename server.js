@@ -1,11 +1,21 @@
+// EXPRESS
 const express   = require('express');
 const app       = express();
 
+// BODY-PARSER
+const bp = require('body-parser')
+app.use(bp.json())
+app.use(bp.urlencoded({ extended: true }))
+var jsonParser = bp.json()
 
-const {querydb,convertComparator,converToSql} = require('./util/functions.js')
+const {querydb,convertComparator,convertToSql} = require('./util/functions.js')
+
+// PUBLIC
+app.use(express.static('public'))
 
 // SERVER
-app.get('/all', (req, res) => {querydb(res, 'SELECT * FROM tblPeopleSkillsScores')})
+
+app.get('/all', (req, res) => {querydb(res, 'SELECT * FROM tblscores')})
 
 app.get('/scores', (req, res) => {
     
@@ -16,7 +26,7 @@ app.get('/scores', (req, res) => {
     // if there are query parameters, then convert it to a SQL query
     if (Object.keys(req.query).length > 0) {
         keyword = 'WHERE'
-        conditions = converToSql(req.query)
+        conditions = convertToSql(req.query)
     } 
     let sqlQuery = `SELECT * FROM tblscores ${keyword} ${conditions}`
     
@@ -25,6 +35,23 @@ app.get('/scores', (req, res) => {
     querydb(res, sqlQuery)
 })
 
+app.post('/scores/add',(req, res) => {
+    let body = req.query
+    
+    
+    console.log(`person_num is ${body.person_num}`)
+    console.log(`level2_num is ${body.level2_num}`)
+    console.log(`level1_num is ${body.level1_num}`)
+    console.log(`cop_num is ${body.cop_num}`)
+    console.log(`score_num is ${body.score_num}`)
+
+    // let sqlQuery = `INSERT INTO tblscores (person_num, level2_num, level1_num, cop_num, score_num) VALUES`
+    // querydb(res, sqlQuery)
+}
+
+)
+
+// LISTEN
 let localport = 8080
 
 app.listen(
