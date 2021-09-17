@@ -4,7 +4,6 @@ const mysql = require('mysql');
 // const localDatabase = require('../local/database.js');
 
 function querydb(res, query) {
-    console.log(localDatabase)
     const conn = mysql.createConnection(
         // localDatabase
         database
