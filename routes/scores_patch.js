@@ -41,6 +41,6 @@ function scores_patch (req, res) {
     
     console.log(sqlQuery)
 
-    // querydb(res, sqlQuery)
+    querydb(res, sqlQuery)
     // res.sendStatus(200);
 }
