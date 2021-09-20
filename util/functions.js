@@ -1,17 +1,25 @@
 module.exports = {querydb,convertComparator,convertToSql}
 
 const mysql = require('mysql');
-// const localDatabase = require('../local/database.js');
+// HIDE
+const localDatabase = require('../local/database.js');
 
 function querydb(res, query) {
     const conn = mysql.createConnection(
-        // localDatabase
-        database
+        // HIDE
+        localDatabase
+        // database
     )
     conn.connect();
     conn.query(query, (err, rows, fields) => {
-        console.log(`Returned ${rows.length} rows`)
-        res.json(rows);
+        if (typeof rows !== 'undefined') {
+            console.log(`Returned ${rows.length} rows`)
+            res.json(rows);
+        } else {
+            console.log("Something is wrong")
+            res.sendStatus()
+        }
+
     });
     conn.end();
 }
