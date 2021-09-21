@@ -15,11 +15,7 @@ function querydb(res, query) {
         if (typeof rows !== 'undefined') {
             console.log(`Returned ${rows.length} rows`)
             res.json(rows);
-        } else {
-            console.log("Something is wrong")
-            res.sendStatus()
         }
-
     });
     conn.end();
 }
