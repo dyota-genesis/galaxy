@@ -1,6 +1,6 @@
 module.exports = scores_add
 
-const {querydb,convertComparator,convertToSql} = require('../util/functions.js')
+const {querydb} = require('../util/functions.js')
 
 async function scores_add (req, res) {
     // body is an array of objects

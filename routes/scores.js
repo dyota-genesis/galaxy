@@ -1,6 +1,6 @@
 module.exports = scores
 
-const {querydb,convertComparator,convertToSql} = require('../util/functions.js')
+const {querydb,convertToSql} = require('../util/functions.js')
 
 async function scores(req, res) {
     // default: no conditions

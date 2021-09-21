@@ -1,6 +1,6 @@
 module.exports = scores_patch
 
-const {querydb,convertComparator,convertToSql} = require('../util/functions.js')
+const {querydb} = require('../util/functions.js')
 
 // ASSUME THAT SCORES ARE THE ONLY THING THAT WILL BE UPDATED
 
