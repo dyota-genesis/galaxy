@@ -2,7 +2,7 @@ module.exports = scores_add
 
 const {querydb,convertComparator,convertToSql} = require('../util/functions.js')
 
-function scores_add (req, res) {
+async function scores_add (req, res) {
     // body is an array of objects
     let body = req.body 
         
@@ -24,6 +24,6 @@ function scores_add (req, res) {
 
     console.log(sqlQuery)
 
-    querydb(res, sqlQuery)
+    return await querydb(res, sqlQuery)
     // res.sendStatus(200);
 }

@@ -18,11 +18,11 @@ const scores_rolematch = require('./routes/scores_rolematch.js')
 app.use(express.static('public'))
 
 // SERVER
-app.get('/all', (req, res) => {querydb(res, 'SELECT * FROM tblscores')})
-app.get('/scores', (req, res) => {scores(req, res)})
-app.post('/scores/add',(req, res) => {scores_add(req, res)})
-app.post('/scores/rolematch',(req, res) => {scores_rolematch(req, res)})
-app.post('/scores/patch',(req, res) => {scores_patch(req, res)})
+app.get('/all',              async (req, res) => {res.json(await querydb(res, 'SELECT * FROM tblscores'))})
+app.get('/scores',           async (req, res) => {res.json(await scores(req, res))})
+app.post('/scores/add',      async (req, res) => {res.json(await scores_add(req, res))})
+app.post('/scores/patch',    async (req, res) => {res.json(await scores_patch(req, res))})
+app.post('/scores/rolematch',async (req, res) => {scores_rolematch(req, res)})
 
 // LISTEN
 let localport = 8080

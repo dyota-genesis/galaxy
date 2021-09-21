@@ -4,7 +4,7 @@ const {querydb,convertComparator,convertToSql} = require('../util/functions.js')
 
 // ASSUME THAT SCORES ARE THE ONLY THING THAT WILL BE UPDATED
 
-function scores_patch (req, res) {
+async function scores_patch (req, res) {
     // make sure that the data in Power Apps contains the record_id_num
 
     // set up variables
@@ -41,5 +41,5 @@ function scores_patch (req, res) {
     
     console.log(sqlQuery)
 
-    querydb(res, sqlQuery)
+    return await querydb(res, sqlQuery)
 }

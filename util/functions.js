@@ -4,20 +4,28 @@ const mysql = require('mysql');
 // HIDE
 // const localDatabase = require('../local/database.js');
 
-function querydb(res, query) {
+async function querydb(res, query) {
     const conn = mysql.createConnection(
         // HIDE
         // localDatabase
         database
     )
+    
+    let output = []
     conn.connect();
-    conn.query(query, (err, rows, fields) => {
-        if (typeof rows !== 'undefined') {
-            console.log(`Returned ${rows.length} rows`)
-            res.json(rows);
-        }
-    });
+    output = await queryPromise(conn, query)
     conn.end();
+    console.log(output)
+    return output
+}
+
+function queryPromise(conn, query) {
+    return new Promise((resolve, reject)=> {
+        conn.query(query, (err, rows, fields) => {
+                console.log(`Returned ${rows.length} rows`)
+                return resolve(rows)
+            })
+    });
 }
 
 function convertComparator(comparator){

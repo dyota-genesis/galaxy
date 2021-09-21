@@ -2,7 +2,7 @@ module.exports = scores
 
 const {querydb,convertComparator,convertToSql} = require('../util/functions.js')
 
-function scores(req, res) {
+async function scores(req, res) {
     // default: no conditions
     let conditions = ''
     let keyword = ''
@@ -16,5 +16,5 @@ function scores(req, res) {
 
     console.log(sqlQuery)
 
-    querydb(res, sqlQuery)
+    return await querydb(res, sqlQuery)
 }
