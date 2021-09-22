@@ -2,13 +2,13 @@ module.exports = {querydb,convertToSql}
 
 const mysql = require('mysql');
 // HIDE
-const localDatabase = require('../local/database.js');
+// const localDatabase = require('../local/database.js');
 
 async function querydb(res, query) {
     const conn = mysql.createConnection(
         // HIDE
-        localDatabase
-        // database
+        // localDatabase
+        database
     )
     
     let output = []

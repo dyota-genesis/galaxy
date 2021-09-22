@@ -21,7 +21,7 @@ app.use(express.static('public'))
 //  GET
 app.get('/all',              async (req, res) => {res.json(await querydb(res, 'SELECT * FROM tblscores'))})
 app.get('/scores',           async (req, res) => {res.json(await scores(req, res))})
-app.get('/scores/rolematch',async (req, res) => {res.json(await scores_rolematch(req, res))})
+app.get('/scores/rolematch', async (req, res) => {res.json(await scores_rolematch(req, res))})
 
 //  POST
 app.post('/scores/add',      async (req, res) => {res.json(await scores_add(req, res))})
