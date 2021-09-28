@@ -18,14 +18,14 @@ async function scores_patch (req, res) {
     // loop through req.body and construct individual clauses
     req.body.forEach((e, i) => {
         // data columns
-        // person_num_clause   +=`WHEN ${e.Value.record_id_num} THEN ${e.Value.person_num} `
-        // level2_num_clause   +=`WHEN ${e.Value.record_id_num} THEN ${e.Value.level2_num} `
-        // level1_num_clause   +=`WHEN ${e.Value.record_id_num} THEN ${e.Value.level1_num} `
-        // cop_num_clause      +=`WHEN ${e.Value.record_id_num} THEN ${e.Value.cop_num} `
-        score_num_clause    +=`WHEN ${e.Value.record_id_num} THEN ${e.Value.score_num} `
+        // person_num_clause   +=`WHEN ${e.record_id_num} THEN ${e.person_num} `
+        // level2_num_clause   +=`WHEN ${e.record_id_num} THEN ${e.level2_num} `
+        // level1_num_clause   +=`WHEN ${e.record_id_num} THEN ${e.level1_num} `
+        // cop_num_clause      +=`WHEN ${e.record_id_num} THEN ${e.cop_num} `
+        score_num_clause    +=`WHEN ${e.record_id_num} THEN ${e.score_num} `
         
         // record_id_num
-        record_id_num_array.push(e.Value.record_id_num)
+        record_id_num_array.push(e.record_id_num)
         record_id_num_clause = record_id_num_array.join(',')
     })
 

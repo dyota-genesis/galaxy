@@ -8,7 +8,7 @@ async function scores_rolematch (req, res) {
     let conditions = ``
 
     req.body.forEach((e, i)=>{
-        conditions += `WHEN level1_num = ${e.Value.level1_num} THEN level2_num = ${e.Value.level2_num} `
+        conditions += `WHEN level1_num = ${e.level1_num} THEN level2_num = ${e.level2_num} `
     })
     
     let sqlQuery = 
