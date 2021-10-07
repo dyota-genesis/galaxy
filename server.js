@@ -24,7 +24,11 @@ app.get('/scores',           async (req, res) => {res.json(await scores(req, res
 app.get('/scores/rolematch', async (req, res) => {res.json(await scores_rolematch(req, res))})
 
 //  POST
-app.post('/scores/add',      async (req, res) => {res.json(await scores_add(req, res))})
+app.post('/scores/add',      async (req, res) => {
+    console.log('req.body.length:' + req.body.length)
+    console.log('req.body[0]:' + req.body[0])
+    res.json(await scores_add(req.body, res))
+})
 app.post('/scores/patch',    async (req, res) => {res.json(await scores_patch(req, res))})
 
 // LISTEN
