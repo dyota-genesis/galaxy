@@ -4,7 +4,7 @@ const {querydb} = require('../util/functions.js')
 
 // ASSUME THAT SCORES ARE THE ONLY THING THAT WILL BE UPDATED
 
-async function scores_patch (req, res) {
+async function scores_patch (reqBody, res) {
     // make sure that the data in Power Apps contains the record_id_num
 
     // set up variables
@@ -16,7 +16,7 @@ async function scores_patch (req, res) {
     let record_id_num_array = []
 
     // loop through req.body and construct individual clauses
-    req.body.forEach((e, i) => {
+    reqBody.forEach((e, i) => {
         // data columns
         // person_num_clause   +=`WHEN ${e.record_id_num} THEN ${e.person_num} `
         // level2_num_clause   +=`WHEN ${e.record_id_num} THEN ${e.level2_num} `
