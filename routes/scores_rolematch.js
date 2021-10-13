@@ -96,8 +96,8 @@ async function scores_rolematch (req, res) {
 
 let sampleReqBody = {
     body: [
-        {Value: {level1_num: 12, level2_num: 5}},
-        {Value: {level1_num: 48, level2_num: 19}}
+        {level1_num: 12, level2_num: 5},
+        {level1_num: 48, level2_num: 19}
     ]
 }
 
