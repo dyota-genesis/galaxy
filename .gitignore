@@ -1,6 +1,7 @@
 # files
 local/
 .database
+xxx*
 
 # Logs
 logs
