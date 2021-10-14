@@ -1,9 +1,8 @@
-'strictNullChecks'
 export = scores_rolematch;
 
 import {querydb} from '../util/functions'
 
-interface Scores {
+type Scores = {
     person_num: number,
     cop_num: number,
     level2_num: number,
@@ -11,7 +10,7 @@ interface Scores {
     score_num: number
 }
 
-interface ReqBody {
+type ReqBody = {
     level1_num: number,
     score_num: number
 }
@@ -40,3 +39,4 @@ async function scores_rolematch(reqBody: Array<ReqBody>, res):Promise<Scores> {
     console.log(output)
     return output
 }
+
