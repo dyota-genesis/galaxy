@@ -39,7 +39,7 @@ exports.__esModule = true;
 exports.convertToSql = exports.querydb = void 0;
 var mysql = require("mysql");
 // HIDE
-var database_1 = require("../local/database");
+// import {localDatabase} from '../local/database';
 function querydb(res, query) {
     return __awaiter(this, void 0, void 0, function () {
         var conn, output;
@@ -48,9 +48,8 @@ function querydb(res, query) {
                 case 0:
                     conn = mysql.createConnection(
                     // HIDE
-                    database_1.localDatabase
-                    // database
-                    );
+                    // localDatabase
+                    database);
                     conn.connect();
                     return [4 /*yield*/, queryPromise(conn, query)];
                 case 1:

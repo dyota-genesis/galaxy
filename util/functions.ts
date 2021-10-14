@@ -2,13 +2,13 @@ export {querydb,convertToSql}
 
 import * as mysql from 'mysql';
 // HIDE
-import {localDatabase} from '../local/database';
+// import {localDatabase} from '../local/database';
 
 async function querydb(res, query) {
     const conn = mysql.createConnection(
         // HIDE
-        localDatabase
-        // database
+        // localDatabase
+        database
     )
     
     conn.connect();
