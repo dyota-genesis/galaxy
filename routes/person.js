@@ -35,30 +35,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+exports.__esModule = true;
+exports.person = void 0;
 var functions_1 = require("../util/functions");
-function scores_rolematch(reqBody, res) {
-    return __awaiter(this, void 0, Promise, function () {
-        var sqlQuery, conditions, output;
+function person(req, res) {
+    return __awaiter(this, void 0, void 0, function () {
+        var sqlQuery, output;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    console.log(reqBody);
-                    conditions = [];
-                    // SELECT * FROM tblscores WHERE
-                    // (level1_num = 6 AND score_num >= 3) OR (level1_num = 10 AND score_num >= 2)
-                    reqBody.forEach(function (e, i) {
-                        console.log(e);
-                        conditions.push("( level1_num = " + e.level1_num + " AND score_num >= " + e.score_num + " )");
-                    });
-                    sqlQuery = "SELECT * FROM tblscores WHERE " + conditions.join(' OR ');
-                    console.log(sqlQuery);
-                    return [4 /*yield*/, functions_1.querydb(res, sqlQuery)];
-                case 1:
-                    output = _a.sent();
-                    console.log(output);
-                    return [2 /*return*/, output];
-            }
+            sqlQuery = "SELECT * FROM tblscores WHERE person_num IN " + req.query.person_num + ";";
+            output = functions_1.querydb(res, sqlQuery);
+            return [2 /*return*/, output];
         });
     });
 }
-module.exports = scores_rolematch;
+exports.person = person;
