@@ -38,8 +38,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 exports.convertToSql = exports.querydb = void 0;
 var mysql = require("mysql");
-// HIDE
-// import {localDatabase} from '../local/database';
 function querydb(res, query) {
     return __awaiter(this, void 0, void 0, function () {
         var conn, output;
@@ -64,28 +62,12 @@ exports.querydb = querydb;
 function queryPromise(conn, query) {
     return new Promise(function (resolve, reject) {
         conn.query(query, function (err, rows, fields) {
-            console.log("Returned " + rows.length + " rows");
+            if (typeof rows !== 'undefined') {
+                console.log("Returned " + rows.length + " rows");
+            }
             return resolve(rows);
         });
     });
-}
-function convertComparator(comparator) {
-    var operator;
-    switch (comparator) {
-        case 'gt':
-            operator = '>';
-            break;
-        case 'lt':
-            operator = '<';
-            break;
-        case 'gte':
-            operator = '>=';
-            break;
-        case 'lte':
-            operator = '>=';
-            break;
-    }
-    return operator;
 }
 function convertToSql(responseQuery) {
     var keys = Object.keys(responseQuery); // array of keys
@@ -111,10 +93,28 @@ function convertToSql(responseQuery) {
         }
         clauses.push(key + " " + operator + " " + condition);
     }
-    var conditions = clauses.join(" AND ");
+    var conditions = clauses.join(' AND ');
     return conditions;
 }
 exports.convertToSql = convertToSql;
+function convertComparator(comparator) {
+    var operator;
+    switch (comparator) {
+        case 'gt':
+            operator = '>';
+            break;
+        case 'lt':
+            operator = '<';
+            break;
+        case 'gte':
+            operator = '>=';
+            break;
+        case 'lte':
+            operator = '>=';
+            break;
+    }
+    return operator;
+}
 var database = {
     host: process.env.JAWSDB_HOST,
     user: process.env.JAWSDB_USER,

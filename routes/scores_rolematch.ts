@@ -1,14 +1,7 @@
 export = scores_rolematch;
 
 import { querydb } from '../util/functions';
-
-type Scores = {
-    person_num: number;
-    cop_num   : number;
-    level2_num: number;
-    level1_num: number;
-    score_num : number;
-};
+import { Scores } from '../util/types';
 
 type ReqBody = {
     level1_num: number;
